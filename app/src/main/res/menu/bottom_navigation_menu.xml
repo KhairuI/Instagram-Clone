@@ -2,32 +2,32 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/homeIconId"
+        android:id="@+id/homeFragment"
         android:icon="@drawable/ic_home"
         android:title="">
 
     </item>
     <item
-        android:id="@+id/searchIconId"
+        android:id="@+id/searchFragment"
         android:icon="@drawable/ic_search"
         android:title="">
 
     </item>
     <item
-        android:id="@+id/insertIconId"
+        android:id="@+id/insertFragment"
         android:icon="@drawable/ic_insert"
         android:title="">
 
     </item>
 
     <item
-        android:id="@+id/notifyIconId"
-        android:icon="@drawable/ic_notify"
+        android:id="@+id/notificationFragment"
+        android:icon="@drawable/ic_notification"
         android:title="">
 
     </item>
     <item
-        android:id="@+id/profileIconId"
+        android:id="@+id/profileFragment"
         android:icon="@drawable/ic_profile"
         android:title="">
 

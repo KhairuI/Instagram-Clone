@@ -9,13 +9,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <androidx.appcompat.widget.Toolbar
+            <com.google.android.material.tabs.TabLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/mainToolBarId"
+                android:id="@+id/homeTabId"
                 android:background="@drawable/border_top">
 
-            </androidx.appcompat.widget.Toolbar>
+            </com.google.android.material.tabs.TabLayout>
 
         </com.google.android.material.appbar.AppBarLayout>
 
