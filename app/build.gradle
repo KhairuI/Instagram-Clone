@@ -51,4 +51,7 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment:$nav_version"
     implementation "androidx.navigation:navigation-ui:$nav_version"
 
+    //circle image View
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
 }

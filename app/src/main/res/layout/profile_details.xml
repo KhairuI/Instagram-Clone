@@ -1,0 +1,148 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- ********** Top Section **************** -->
+
+        <RelativeLayout
+            android:padding="10dp"
+            android:id="@+id/profileSummary"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                android:weightSum="100">
+
+                <RelativeLayout
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="25">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:src="@drawable/profile"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp">
+
+                    </de.hdodenhof.circleimageview.CircleImageView>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="75">
+                    <include layout="@layout/profile_post_summery"></include>
+
+                </RelativeLayout>
+
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:padding="10dp"
+            android:id="@+id/profileStatus"
+            android:layout_below="@id/profileSummary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="Khairul Islam"
+                    android:id="@+id/profileNameId"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+
+                <TextView
+                    android:text="Hi I am using Instagram"
+                    android:id="@+id/profileStatusId"
+                    android:textSize="14sp"
+                    android:textColor="#0D668E"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:backgroundTint="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:text="Edit profile"
+                            android:id="@+id/editProfileTextId"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                        </TextView>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_below="@id/profileStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp">
+
+            <GridView
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:id="@+id/profileGridViewId"
+                android:stretchMode="columnWidth"
+                android:horizontalSpacing="1dp"
+                android:verticalSpacing="1dp"
+                android:numColumns="3"
+                android:layout_height="wrap_content">
+
+            </GridView>
+
+
+
+        </RelativeLayout>
+
+
+
+
+
+
+
+    </RelativeLayout>
+
+</merge>

@@ -15,11 +15,12 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:text="Khairul.Islam"
+                    android:text="Options"
                     android:textSize="20sp"
                     android:layout_centerVertical="true"
-                    android:id="@+id/profileToolbarNameId"
-                    android:layout_marginLeft="15dp"
+                    android:id="@+id/accountSettingToolbarNameId"
+                    android:layout_marginLeft="25dp"
+                    android:layout_toRightOf="@id/accountSettingBackId"
                     android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
@@ -27,10 +28,8 @@
                 </TextView>
 
                 <ImageView
-                    android:src="@drawable/ic_three_dot"
-                    android:id="@+id/profileMenuImageId"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="20sp"
+                    android:src="@drawable/ic_back_arrow"
+                    android:id="@+id/accountSettingBackId"
                     android:layout_width="30dp"
                     android:layout_height="30dp">
 
@@ -44,3 +43,4 @@
     </com.google.android.material.appbar.AppBarLayout>
 
 </merge>
+

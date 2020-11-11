@@ -1,0 +1,92 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="21"
+                android:textStyle="bold"
+                android:layout_alignParentStart="true"
+                android:textSize="20sp"
+                android:id="@+id/postCountNumberId"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </TextView>
+
+
+            <TextView
+                android:text="Posts"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/postCountNumberId"
+                android:textSize="15sp"
+                android:id="@+id/postCountTextId"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </TextView>
+
+            <TextView
+                android:text="81"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/followingCountNumberId"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </TextView>
+
+            <TextView
+                android:text="Following"
+
+                android:layout_below="@id/followingCountNumberId"
+                android:textSize="15sp"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/followingCountTextId"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </TextView>
+            <TextView
+                android:text="75"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/followersCountNumberId"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </TextView>
+
+            <TextView
+                android:text="Followers"
+                android:textSize="15sp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/followersCountNumberId"
+                android:id="@+id/followersCountTextId"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </TextView>
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+</merge>

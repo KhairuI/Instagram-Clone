@@ -22,12 +22,21 @@
         tools:layout="@layout/fragment_insert" />
     <fragment
         android:id="@+id/notificationFragment"
-        android:name="com.example.instagramclone.view.notification.NotificationFragment"
+        android:name="com.example.instagramclone.view.notificationView.NotificationFragment"
         android:label="fragment_notification"
         tools:layout="@layout/fragment_notification" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.instagramclone.view.profile.ProfileFragment"
+        android:name="com.example.instagramclone.view.profileView.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_accountSetting2"
+            app:destination="@id/accountSetting2" />
+    </fragment>
+    <fragment
+        android:id="@+id/accountSetting2"
+        android:name="com.example.instagramclone.view.profileView.AccountSetting"
+        android:label="fragment_account_setting"
+        tools:layout="@layout/fragment_account_setting" />
 </navigation>

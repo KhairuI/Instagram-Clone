@@ -2,13 +2,49 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/userProfileId"
     android:layout_height="match_parent"
-    tools:context=".view.profile.ProfileFragment">
+    tools:context=".view.profileView.ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Profile" />
+        android:layout_height="match_parent">
+
+                  <!-- ********** Top toolbar **************** -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/profileTop">
+
+            <include layout="@layout/profile_toolbar"/>
+
+        </RelativeLayout>
+
+        <!-- ********** Middle Section **************** -->
+
+        <RelativeLayout
+            android:layout_below="@id/profileTop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include layout="@layout/profile_details"></include>
+
+
+        </RelativeLayout>
+
+        <ProgressBar
+            android:id="@+id/profileProgressBarId"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="150dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp">
+
+        </ProgressBar>
+
+
+
+
+
+    </RelativeLayout>
 
 </FrameLayout>
