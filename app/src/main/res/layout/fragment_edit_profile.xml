@@ -5,10 +5,40 @@
     android:layout_height="match_parent"
     tools:context=".view.profileView.EditProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Edit Profile" />
+
+   <androidx.coordinatorlayout.widget.CoordinatorLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+
+           <!-- Toolbar section -->
+           <RelativeLayout
+               android:layout_width="match_parent"
+               android:id="@+id/editProfileTop"
+               android:layout_height="wrap_content">
+
+               <include layout="@layout/edit_profile_toolbar"></include>
+
+           </RelativeLayout>
+
+
+           <!-- middle section -->
+           <RelativeLayout
+               android:layout_below="@id/editProfileTop"
+               android:layout_width="match_parent"
+               android:id="@+id/editProfileMiddle"
+               android:layout_height="wrap_content">
+               <include layout="@layout/edit_profile_center"></include>
+
+
+           </RelativeLayout>
+
+
+       </RelativeLayout>
+
+   </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </FrameLayout>

@@ -73,9 +73,20 @@
                 </TextView>
 
                 <TextView
-                    android:text="Hi I am using Instagram"
-                    android:id="@+id/profileStatusId"
-                    android:textSize="14sp"
+                    android:text="This is Bio"
+                    android:id="@+id/profileBioId"
+                    android:textSize="15sp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+
+
+                <TextView
+                    android:text="www.uzzal.com"
+                    android:id="@+id/profileWebId"
+                    android:textSize="15sp"
                     android:textColor="#0D668E"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
