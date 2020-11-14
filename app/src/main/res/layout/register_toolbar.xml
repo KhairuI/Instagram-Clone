@@ -3,39 +3,28 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@drawable/border_top">
+        android:background="@drawable/border_bottom">
 
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/profileToolbarId">
+            android:id="@+id/registerToolbarId">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:text="Khairul.Islam"
-                    android:textSize="20sp"
-                    android:layout_centerVertical="true"
-                    android:id="@+id/profileToolbarNameId"
+                    android:text="Already have an account? Log In"
+                    android:textSize="15sp"
+                    android:layout_centerInParent="true"
+                    android:id="@+id/registerToolbarTextId"
                     android:layout_marginLeft="15dp"
                     android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
                 </TextView>
-
-                <ImageView
-                    android:src="@drawable/ic_menu"
-                    android:id="@+id/profileMenuImageId"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="20sp"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp">
-
-                </ImageView>
-
 
             </RelativeLayout>
 

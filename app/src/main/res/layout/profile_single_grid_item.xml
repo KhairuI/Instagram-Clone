@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <com.example.instagramclone.utils.SquareImage
+        android:layout_width="match_parent"
+        android:scaleType="centerCrop"
+        android:id="@+id/singleProfileImageId"
+        android:layout_height="match_parent">
+
+    </com.example.instagramclone.utils.SquareImage>
+
+    <ProgressBar
+        android:layout_width="45dp"
+        android:id="@+id/singleProfileProgressId"
+        android:layout_centerInParent="true"
+        android:layout_height="45dp">
+
+    </ProgressBar>
+
+</RelativeLayout>
