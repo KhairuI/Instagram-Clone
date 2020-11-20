@@ -33,10 +33,27 @@
         <action
             android:id="@+id/action_profileFragment_to_accountSetting2"
             app:destination="@id/accountSetting2" />
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/accountSetting2"
         android:name="com.example.instagramclone.view.profileView.AccountSetting"
         android:label="fragment_account_setting"
         tools:layout="@layout/fragment_account_setting" />
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.instagramclone.view.profileView.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" >
+        <action
+            android:id="@+id/action_editProfileFragment_to_setNameFragment"
+            app:destination="@id/setNameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/setNameFragment"
+        android:name="com.example.instagramclone.view.profileView.SetNameFragment"
+        android:label="fragment_set_name"
+        tools:layout="@layout/fragment_set_name" />
 </navigation>

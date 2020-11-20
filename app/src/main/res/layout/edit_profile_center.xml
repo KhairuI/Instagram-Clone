@@ -1,4 +1,5 @@
-<merge xmlns:android="http://schemas.android.com/apk/res/android">
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -24,7 +25,6 @@
                     android:layout_width="90dp"
                     android:id="@+id/editProfileImageId"
                     android:layout_centerHorizontal="true"
-                    android:src="@drawable/profile"
                     android:layout_height="90dp">
 
                 </de.hdodenhof.circleimageview.CircleImageView>
@@ -54,7 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView
+                  <TextView
                     android:text="Name"
                     android:textColor="@color/black"
                     android:id="@+id/nameText"
@@ -65,7 +65,7 @@
 
                 <EditText
                     android:hint="Name"
-                    android:id="@+id/editProfileNameEditTextId"
+                    android:id="@+id/editProfileDisplayNameEditTextId"
                     android:layout_marginTop="5dp"
                     android:layout_below="@id/nameText"
                     android:layout_width="match_parent"
@@ -73,32 +73,46 @@
 
                 </EditText>
 
+
+
                 <TextView
                     android:text="Username"
                     android:textColor="@color/black"
                     android:layout_marginTop="5dp"
-                    android:layout_below="@id/editProfileNameEditTextId"
+                    android:layout_below="@id/editProfileDisplayNameEditTextId"
                     android:id="@+id/userNameText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
                 </TextView>
 
-                <EditText
-                    android:hint="Username"
+                <TextView
+                    android:layout_below="@+id/userNameText"
                     android:id="@+id/editProfileUserNameEditTextId"
-                    android:layout_marginTop="5dp"
-                    android:layout_below="@id/userNameText"
-                    android:layout_width="match_parent"
+                    android:text=""
+                    android:textSize="18sp"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginTop="7dp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
-                </EditText>
+                </TextView>
+
+                <View
+                    android:layout_below="@+id/editProfileUserNameEditTextId"
+                    android:background="@color/gray"
+                    android:id="@+id/view"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp">
+
+                </View>
 
                 <TextView
                     android:text="Website"
                     android:textColor="@color/black"
                     android:layout_marginTop="5dp"
-                    android:layout_below="@id/editProfileUserNameEditTextId"
+                    android:layout_below="@id/view"
                     android:id="@+id/websiteText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
@@ -194,6 +208,48 @@
                     android:id="@+id/editProfilePhoneEditTextId"
                     android:layout_marginTop="5dp"
                     android:layout_below="@id/phoneText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </EditText>
+
+                <TextView
+                    android:text="Gender"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@+id/editProfilePhoneEditTextId"
+                    android:id="@+id/GenderText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+
+                <EditText
+                    android:hint="Gender"
+                    android:id="@+id/editProfileGenderEditTextId"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@id/GenderText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </EditText>
+
+                <TextView
+                    android:text="BirthDay"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@+id/editProfileGenderEditTextId"
+                    android:id="@+id/birthdayText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+
+                <EditText
+                    android:hint="Birthday"
+                    android:id="@+id/editProfileBirthdayEditTextId"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@id/birthdayText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 

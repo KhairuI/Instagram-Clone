@@ -7,6 +7,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
@@ -16,24 +18,32 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.instagramclone.R;
 import com.example.instagramclone.adapter.GridImageAdapter;
+import com.example.instagramclone.model.m.profileModel.UserSettings;
 import com.example.instagramclone.utils.UniversalImageLoader;
+import com.example.instagramclone.viewmodel.profileViewModel.ProfileViewModel;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfileFragment extends Fragment {
 
     private Toolbar profileToolbar;
     private GridView profileGridView;
     private ImageView profileMenu;
-    ImageView profileImageView;
+    private CircleImageView profileImageView;
+    private TextView userName,postCount,followingCount,followerCount,displayName,profileBio,profileWebsite,editProfileText;
     private NavController navController;
     private ProgressBar profileProgressBar;
     private static final int gridColumn=3;
+    private ProfileViewModel profileViewModel;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -43,9 +53,19 @@ public class ProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        initialViewModel();
+        setInfo();
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_profile, container, false);
         profileToolbar= view.findViewById(R.id.profileToolbarId);
+        userName= view.findViewById(R.id.profileToolbarNameId);
+        postCount= view.findViewById(R.id.postCountNumberId);
+        followingCount= view.findViewById(R.id.followingCountNumberId);
+        followerCount= view.findViewById(R.id.followersCountNumberId);
+        displayName= view.findViewById(R.id.displayNameId);
+        profileBio= view.findViewById(R.id.profileBioId);
+        profileWebsite= view.findViewById(R.id.profileWebId);
         profileImageView= view.findViewById(R.id.profileImageViewId);
         profileGridView= view.findViewById(R.id.profileGridViewId);
         profileProgressBar= view.findViewById(R.id.profileProgressBarId);
@@ -53,10 +73,37 @@ public class ProfileFragment extends Fragment {
         //setHasOptionsMenu(true); for adding menu in fragment
         setUpToolbar();
         initImageLoader();
-        setProfileImage();
         tempGridImage();
 
         return view;
+    }
+
+    private void setInfo() {
+        profileViewModel.getUserSettingData();
+        profileViewModel.userSettingData.observe(getActivity(), new Observer<UserSettings>() {
+            @Override
+            public void onChanged(UserSettings userSettings) {
+
+                try {
+                    userName.setText(userSettings.getUserName());
+                    setProfileImage(userSettings.getProfilePhoto());
+                    postCount.setText(userSettings.getPosts());
+                    followerCount.setText(userSettings.getFollowers());
+                    followingCount.setText(userSettings.getFollowing());
+                    displayName.setText(userSettings.getDisplayName());
+                    profileBio.setText(userSettings.getDescription());
+                    profileWebsite.setText(userSettings.getWebsite());
+
+                }catch (NullPointerException e){
+                    Toast.makeText(getActivity(), ""+e.toString(), Toast.LENGTH_SHORT).show();
+                }
+
+
+            }
+        });
+
+
+
     }
 
     private void tempGridImage(){
@@ -85,9 +132,15 @@ public class ProfileFragment extends Fragment {
 
     }
 
-    private void setProfileImage() {
-        String imageUrl="https://hindikiguide.com/wp-content/uploads/2018/11/Cat-image-300x166.jpg";
-        UniversalImageLoader.setImage(imageUrl,profileImageView,profileProgressBar,"");
+    private void setProfileImage(String url) {
+        if(url.equals("Empty")){
+            url= "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png";
+            UniversalImageLoader.setImage(url,profileImageView,profileProgressBar,"");
+        }
+        else {
+            UniversalImageLoader.setImage(url,profileImageView,profileProgressBar,"");
+        }
+
     }
     private void initImageLoader() {
         UniversalImageLoader universalImageLoader= new UniversalImageLoader(getActivity());
@@ -100,19 +153,29 @@ public class ProfileFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         navController= Navigation.findNavController(view);
         profileMenu= view.findViewById(R.id.profileMenuImageId);
+        editProfileText= view.findViewById(R.id.editProfileTextId);
         profileMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 navController.navigate(R.id.action_profileFragment_to_accountSetting2);
             }
         });
+
+        editProfileText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_profileFragment_to_editProfileFragment);
+            }
+        });
     }
 
     private void setUpToolbar(){
-
         ((AppCompatActivity)getActivity()).setSupportActionBar(profileToolbar);
+    }
 
-
+    private void initialViewModel() {
+        profileViewModel= new ViewModelProvider(getActivity(),ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()))
+                .get(ProfileViewModel.class);
     }
 
 }

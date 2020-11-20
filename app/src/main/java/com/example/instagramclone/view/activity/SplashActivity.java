@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.instagramclone.viewmodel.AuthViewModel;
+import com.example.instagramclone.viewmodel.authViewModel.AuthViewModel;
 
 public class SplashActivity extends AppCompatActivity {
 

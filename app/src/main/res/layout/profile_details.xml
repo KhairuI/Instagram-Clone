@@ -27,7 +27,6 @@
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/profileImageViewId"
-                        android:src="@drawable/profile"
                         android:layout_width="80dp"
                         android:layout_height="80dp">
 
@@ -65,8 +64,8 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:text="Khairul Islam"
-                    android:id="@+id/profileNameId"
+                    android:text=""
+                    android:id="@+id/displayNameId"
                     android:textSize="17sp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
@@ -76,7 +75,7 @@
                 </TextView>
 
                 <TextView
-                    android:text="This is Bio"
+                    android:text=""
                     android:id="@+id/profileBioId"
                     android:textSize="15sp"
                     android:textColor="@color/black"
@@ -87,7 +86,7 @@
 
 
                 <TextView
-                    android:text="www.uzzal.com"
+                    android:text=""
                     android:id="@+id/profileWebId"
                     android:textSize="15sp"
                     android:textColor="#0D668E"

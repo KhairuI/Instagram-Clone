@@ -14,8 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.instagramclone.R;
-import com.example.instagramclone.model.Login;
-import com.example.instagramclone.viewmodel.AuthViewModel;
+import com.example.instagramclone.model.m.authModel.Login;
+import com.example.instagramclone.viewmodel.authViewModel.AuthViewModel;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class LoginActivity extends AppCompatActivity {
@@ -38,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 String email= loginEmailEditText.getText().toString();
                 String passWord= loginPasswordEditText.getText().toString();
-                if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(email)){
+                if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(passWord)){
                     if(passWord.length()>=6){
                         loginProgress.setVisibility(View.VISIBLE);
                         Login login= new Login(email,passWord);
@@ -47,9 +47,15 @@ public class LoginActivity extends AppCompatActivity {
                             @Override
                             public void onChanged(Login login) {
                                 if(login.isLogin){
-                                    Toast.makeText(LoginActivity.this, ""+login.uId, Toast.LENGTH_SHORT).show();
+                                  //  Toast.makeText(LoginActivity.this, ""+login.uId, Toast.LENGTH_SHORT).show();
                                     loginProgress.setVisibility(View.GONE);
-                                    goToMainActivity();
+                                    if(login.uId.equals("exist")){
+                                        goToMainActivity();
+                                    }
+                                    else {
+                                        goToSetNameActivity();
+                                    }
+
                                 }
                                 else {
                                     loginProgress.setVisibility(View.GONE);
@@ -73,6 +79,8 @@ public class LoginActivity extends AppCompatActivity {
         loginTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent= new Intent(LoginActivity.this,SelectRegister.class);
+                startActivity(intent);
 
             }
         });
@@ -82,6 +90,12 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void goToSetNameActivity() {
+        Intent intent= new Intent(LoginActivity.this, SetNameActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void goToMainActivity() {

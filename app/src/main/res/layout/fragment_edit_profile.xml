@@ -36,8 +36,18 @@
 
            </RelativeLayout>
 
+           <ProgressBar
+               android:id="@+id/editProfileProgressId"
+               android:layout_centerInParent="true"
+               android:layout_width="100dp"
+               android:layout_height="100dp">
+
+           </ProgressBar>
+
 
        </RelativeLayout>
+
+
 
    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

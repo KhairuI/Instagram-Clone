@@ -82,4 +82,5 @@ public class AccountSetting extends Fragment {
         });
 
     }
+
 }

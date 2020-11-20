@@ -1,4 +1,4 @@
-package com.example.instagramclone.model;
+package com.example.instagramclone.model.m.authModel;
 
 public class Login {
 

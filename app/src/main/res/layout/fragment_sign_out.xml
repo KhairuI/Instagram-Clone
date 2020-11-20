@@ -6,9 +6,66 @@
     tools:context=".view.profileView.SignOutFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
+
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Sign Out" />
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/signOutTool"
+            android:layout_alignParentTop="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include layout="@layout/signout_toolbar"></include>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_centerInParent="true"
+            android:padding="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ProgressBar
+                android:id="@+id/signOutProgressId"
+                android:layout_centerHorizontal="true"
+                android:layout_width="60dp"
+                android:layout_height="60dp">
+
+            </ProgressBar>
+
+            <TextView
+                android:text="Signout Here"
+                android:layout_marginTop="15dp"
+                android:id="@+id/signOut"
+                android:layout_below="@id/signOutProgressId"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </TextView>
+
+            <Button
+                android:text="SignOut"
+                android:layout_marginTop="15dp"
+                android:id="@+id/signOutButtonId"
+                android:layout_below="@id/signOut"
+                android:textAllCaps="false"
+                android:layout_width="match_parent"
+                android:backgroundTint="@color/dark_blue"
+                android:layout_height="60dp">
+
+            </Button>
+
+        </RelativeLayout>
+
+
+
+
+
+    </RelativeLayout>
 
 </FrameLayout>
