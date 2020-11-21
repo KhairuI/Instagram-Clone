@@ -41,7 +41,14 @@
         android:id="@+id/accountSetting2"
         android:name="com.example.instagramclone.view.profileView.AccountSetting"
         android:label="fragment_account_setting"
-        tools:layout="@layout/fragment_account_setting" />
+        tools:layout="@layout/fragment_account_setting" >
+        <action
+            android:id="@+id/action_accountSetting2_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_accountSetting2_to_signOutFragment"
+            app:destination="@id/signOutFragment" />
+    </fragment>
     <fragment
         android:id="@+id/editProfileFragment"
         android:name="com.example.instagramclone.view.profileView.EditProfileFragment"
@@ -56,4 +63,9 @@
         android:name="com.example.instagramclone.view.profileView.SetNameFragment"
         android:label="fragment_set_name"
         tools:layout="@layout/fragment_set_name" />
+    <fragment
+        android:id="@+id/signOutFragment"
+        android:name="com.example.instagramclone.view.profileView.SignOutFragment"
+        android:label="fragment_sign_out"
+        tools:layout="@layout/fragment_sign_out" />
 </navigation>

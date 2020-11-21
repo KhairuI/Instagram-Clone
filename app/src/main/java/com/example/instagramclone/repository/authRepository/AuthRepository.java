@@ -68,32 +68,6 @@ public class AuthRepository {
         return haveFirebase;
     }
 
- /*   //check user in database exist.....
-    public String userExistOrNot(String uId){
-        final String[] isExist = new String[1];
-        String a;
-
-        final DocumentReference userRef = firebaseFirestore.collection("users").document(uId);
-        userRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-
-                if(task.isSuccessful()){
-                    DocumentSnapshot document = task.getResult();
-                    if(document==null){
-                        isExist[0] ="not_exist";
-                    }
-                    else {
-                        isExist[0] ="exist";
-                    }
-
-                }
-            }
-        });
-        a= isExist[0];
-        return a;
-    }*/
-
             // login existing user .....
 
     public MutableLiveData<Login> userLogin(Login login){
@@ -217,20 +191,26 @@ public class AuthRepository {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful()){
-                    for(DocumentSnapshot documentSnapshot: task.getResult()){
-                        String getName = documentSnapshot.getString("user_name");
-                        if(getName.equals(name)){
-                            checkName.setValue("Exist");
-                        }
-                        else {
-                            checkName.setValue("Not_Exist");
+                    if(task.getResult().size()==0)
+                    {
+                        checkName.setValue("Not_Exist");
+                    }
+                    else {
+                        for(DocumentSnapshot documentSnapshot: task.getResult()){
+                            String getName = documentSnapshot.getString("user_name");
+                            if(getName.equals(name)){
+                                checkName.setValue("Exist");
+                            }
+                            else {
+                                checkName.setValue("Not_Exist");
+                            }
                         }
                     }
+
+
+
                 }
-                if(task.getResult().size()==0)
-                {
-                    checkName.setValue("Not_Exist");
-                }
+
             }
         });
         return checkName;

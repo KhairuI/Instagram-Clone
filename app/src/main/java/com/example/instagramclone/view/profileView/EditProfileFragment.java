@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.instagramclone.R;
+import com.example.instagramclone.model.m.profileModel.UpdateProfile;
 import com.example.instagramclone.model.m.profileModel.UserInfo;
 import com.example.instagramclone.model.m.profileModel.UserSettings;
 import com.example.instagramclone.utils.UniversalImageLoader;
@@ -83,6 +84,33 @@ public class EditProfileFragment extends Fragment {
         editProfileSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                String getName= displayName.getText().toString();
+                String getWebsite= website.getText().toString();
+                String description= bio.getText().toString();
+                String getEmail= email.getText().toString();
+                String getPhone= phone.getText().toString();
+                String getGender= gender.getText().toString();
+                String getBirthday= birthday.getText().toString();
+                UpdateProfile updateProfile= new UpdateProfile(getName,getWebsite,description,getEmail,getPhone,getGender,getBirthday);
+                profileViewModel.UpdateProfile(updateProfile);
+                profileViewModel.updateProfile.observe(getActivity(), new Observer<String>() {
+                    @Override
+                    public void onChanged(String s) {
+                        if(s.equals("true")){
+                            Toast.makeText(getActivity(), "Update Successfully", Toast.LENGTH_SHORT).show();
+                            getActivity().onBackPressed();
+                        }
+                        else{
+                            Toast.makeText(getActivity(), "Update Failed", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                });
+
+
+
+
 
             }
         });

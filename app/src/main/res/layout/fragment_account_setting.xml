@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <include layout="@layout/layout_middle_page"></include>
+        <!--<include layout="@layout/layout_middle_page"></include> -->
+
 
         <RelativeLayout
             android:id="@+id/accSetAllId"

@@ -37,6 +37,7 @@ public class SetNameActivity extends AppCompatActivity {
         setName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                setNameProgress.setVisibility(View.VISIBLE);
 
                 String name= nameEditText.getText().toString();
                 name= name.replace(" ","");
@@ -47,9 +48,11 @@ public class SetNameActivity extends AppCompatActivity {
                         @Override
                         public void onChanged(String s) {
                             if(s.equals("Exist")){
+                                setNameProgress.setVisibility(View.GONE);
                                 Toast.makeText(SetNameActivity.this, "This name is already Exist", Toast.LENGTH_SHORT).show();
                             }
                             else {
+                                setNameProgress.setVisibility(View.GONE);
                                 nameEditText.setText("");
                                 finalNameText.setVisibility(View.VISIBLE);
                                 user.setVisibility(View.VISIBLE);

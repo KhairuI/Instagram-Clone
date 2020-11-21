@@ -18,14 +18,150 @@
 
         </TextView>
 
-        <ListView
+        <LinearLayout
+            android:layout_below="@id/accountSetting"
+            android:orientation="vertical"
+            android:id="@+id/editProfileLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:padding="5dp"
+                android:layout_marginTop="7dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:src="@drawable/ic_edit"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp">
+
+                </ImageView>
+
+                <TextView
+                    android:text="Edit Profile"
+                    android:textSize="20sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+
+            </LinearLayout>
+
+            <View
+                android:background="@color/gray"
+                android:layout_width="match_parent"
+                android:layout_height="2dp">
+
+            </View>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="3dp"
+            android:layout_below="@id/editProfileLayout"
+            android:orientation="vertical"
+            android:id="@+id/ChangeEmailLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:padding="5dp"
+                android:layout_marginTop="7dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:src="@drawable/ic_email"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp">
+
+                </ImageView>
+
+                <TextView
+                    android:text="Change Email and Password"
+                    android:textSize="20sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+
+            </LinearLayout>
+
+            <View
+                android:background="@color/gray"
+                android:layout_width="match_parent"
+                android:layout_height="2dp">
+
+            </View>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="3dp"
+            android:layout_below="@id/ChangeEmailLayout"
+            android:orientation="vertical"
+            android:id="@+id/signOutLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:padding="5dp"
+                android:layout_marginTop="7dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:src="@drawable/ic_signout"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp">
+
+                </ImageView>
+
+                <TextView
+                    android:text="Sign Out"
+                    android:textSize="20sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+
+            </LinearLayout>
+
+            <View
+                android:background="@color/gray"
+                android:layout_width="match_parent"
+                android:layout_height="2dp">
+
+            </View>
+
+        </LinearLayout>
+
+
+
+
+        <!--
+           <ListView
             android:layout_below="@id/accountSetting"
             android:layout_marginTop="4dp"
             android:id="@+id/accountSettingListId"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        </ListView>
+        </ListView>-->
+
 
 
 

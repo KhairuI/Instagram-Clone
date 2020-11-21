@@ -3,6 +3,7 @@ package com.example.instagramclone.repository.profileRepository;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.instagramclone.model.m.profileModel.UpdateProfile;
 import com.example.instagramclone.model.m.profileModel.UserInfo;
 import com.example.instagramclone.model.m.profileModel.UserSettings;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -82,6 +83,107 @@ public class ProfileRepository {
 
         return userData;
     }
+
+    //  retrieve only user name for edit username.....
+    public MutableLiveData<String> getUserName(){
+
+        String currentUser= firebaseAuth.getCurrentUser().getUid();
+        final MutableLiveData<String> userName= new MutableLiveData<>();
+        firebaseFirestore.collection("users").document(currentUser).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()){
+                    DocumentSnapshot ds= task.getResult();
+                    String name = ds.getString("user_name");
+                    userName.setValue(name);
+
+                }
+                else {
+                    userName.setValue("get Name Failed");
+                }
+
+            }
+        });
+
+        return userName;
+
+
+    }
+
+    //  Update user name when user edit user name.....
+
+    public MutableLiveData<String> UpdateUserName(String name){
+        String currentUser= firebaseAuth.getCurrentUser().getUid();
+        final MutableLiveData<String> updateName= new MutableLiveData<>();
+
+        firebaseFirestore.collection("users").document(currentUser)
+                .update("user_name",name).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+
+                    firebaseFirestore.collection("user_account_settings").document(currentUser)
+                            .update("user_name",name).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                updateName.setValue("true");
+                            }
+                            else {
+                                updateName.setValue("false");
+                            }
+                        }
+                    });
+                }
+                else {
+                    updateName.setValue("false");
+                }
+            }
+        });
+
+        return updateName;
+
+    }
+
+    // update profile using a custom class "UpdateProfile" ...........
+    public MutableLiveData<String> UpdateProfile(UpdateProfile profile){
+
+        String currentUser= firebaseAuth.getCurrentUser().getUid();
+        final MutableLiveData<String> updateProfile= new MutableLiveData<>();
+        firebaseFirestore.collection("user_account_settings").document(currentUser)
+                .update("display_name",profile.getName(),
+                        "website",profile.getWebsite(),
+                        "description",profile.getDescription()).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    firebaseFirestore.collection("users").document(currentUser)
+                            .update("email",profile.getEmail(),
+                                    "phone_number",profile.getPhone(),
+                                    "gender",profile.getGender(),"birthday",profile.getBirthday())
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if(task.isSuccessful()){
+                                        updateProfile.setValue("true");
+                                    }
+                                    else {
+                                        updateProfile.setValue("false");
+                                    }
+                                }
+                            });
+                }
+                else {
+                    updateProfile.setValue("false");
+                }
+
+            }
+        });
+
+        return updateProfile;
+
+    }
+
 
 
 }
