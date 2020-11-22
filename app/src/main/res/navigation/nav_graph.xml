@@ -48,6 +48,9 @@
         <action
             android:id="@+id/action_accountSetting2_to_signOutFragment"
             app:destination="@id/signOutFragment" />
+        <action
+            android:id="@+id/action_accountSetting2_to_changeEmailFragment"
+            app:destination="@id/changeEmailFragment" />
     </fragment>
     <fragment
         android:id="@+id/editProfileFragment"
@@ -68,4 +71,9 @@
         android:name="com.example.instagramclone.view.profileView.SignOutFragment"
         android:label="fragment_sign_out"
         tools:layout="@layout/fragment_sign_out" />
+    <fragment
+        android:id="@+id/changeEmailFragment"
+        android:name="com.example.instagramclone.view.profileView.ChangeEmailFragment"
+        android:label="fragment_change_email"
+        tools:layout="@layout/fragment_change_email" />
 </navigation>

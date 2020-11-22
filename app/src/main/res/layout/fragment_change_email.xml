@@ -5,10 +5,41 @@
     android:layout_height="match_parent"
     tools:context=".view.profileView.ChangeEmailFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+
+        <!-- Toolbar -->
+
+        <RelativeLayout
+            android:id="@+id/changeEmail"
+            android:layout_alignParentTop="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <include layout="@layout/change_email_toolbar"></include>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_below="@id/changeEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include layout="@layout/change_email_middle"></include>
+
+        </RelativeLayout>
+
+
+        <ProgressBar
+            android:id="@+id/changeEmailProgressId"
+            android:layout_centerInParent="true"
+            android:layout_width="60dp"
+            android:layout_height="60dp">
+
+        </ProgressBar>
+
+
+
+
+    </RelativeLayout>
 
 </FrameLayout>

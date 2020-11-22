@@ -70,6 +70,7 @@ public class ProfileFragment extends Fragment {
         profileGridView= view.findViewById(R.id.profileGridViewId);
         profileProgressBar= view.findViewById(R.id.profileProgressBarId);
         profileProgressBar.setVisibility(View.GONE);
+
         //setHasOptionsMenu(true); for adding menu in fragment
         setUpToolbar();
         initImageLoader();
@@ -83,6 +84,7 @@ public class ProfileFragment extends Fragment {
         profileViewModel.userSettingData.observe(getActivity(), new Observer<UserSettings>() {
             @Override
             public void onChanged(UserSettings userSettings) {
+
 
                 try {
                     userName.setText(userSettings.getUserName());

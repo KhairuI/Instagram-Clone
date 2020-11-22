@@ -29,7 +29,7 @@ public class AccountSetting extends Fragment {
 
     //private ListView accountListView;
     private ImageView backImage;
-    private LinearLayout editProfile,signOut;
+    private LinearLayout editProfile,signOut,changeEmail;
     private NavController navController;
     //private ArrayList option= new ArrayList();
    /* private SectionStatePageAdapter statePageAdapter;
@@ -69,6 +69,7 @@ public class AccountSetting extends Fragment {
         navController= Navigation.findNavController(view);
         editProfile= view.findViewById(R.id.editProfileLayout);
         signOut= view.findViewById(R.id.signOutLayout);
+        changeEmail= view.findViewById(R.id.ChangeEmailLayout);
 
 
         editProfile.setOnClickListener(new View.OnClickListener() {
@@ -83,6 +84,12 @@ public class AccountSetting extends Fragment {
             public void onClick(View view) {
 
                 navController.navigate(R.id.action_accountSetting2_to_signOutFragment);
+            }
+        });
+        changeEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_accountSetting2_to_changeEmailFragment);
             }
         });
     }

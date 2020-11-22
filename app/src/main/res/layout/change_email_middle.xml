@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="20dp"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Confirm Password"
+            android:textSize="20sp"
+            android:id="@+id/passText"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="5dp"
+            android:id="@+id/changePass"
+            android:layout_below="@id/passText"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            app:boxBackgroundMode="outline"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginHorizontal="20dp"
+            app:boxCornerRadiusBottomEnd="5dp"
+            app:boxCornerRadiusBottomStart="5dp"
+            app:boxCornerRadiusTopEnd="5dp"
+            app:boxCornerRadiusTopStart="5dp"
+            app:endIconMode="password_toggle"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/changePasswordEditTextId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <RelativeLayout
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_below="@id/changePass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="Confirm"
+                android:textSize="18sp"
+                android:id="@+id/confirmTextId"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/dark_blue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </TextView>
+
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/newEmailPassword"
+        android:layout_marginTop="12dp"
+        android:layout_below="@id/top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="New Email and Password"
+            android:textSize="20sp"
+            android:id="@+id/newText"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+        <TextView
+            android:layout_below="@+id/newText"
+            android:id="@+id/alert"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:justificationMode="inter_word"
+            android:textColor="#F41F30"
+            android:layout_centerHorizontal="true"
+            android:text="@string/new_email_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_below="@id/alert"
+            android:id="@+id/newEmail"
+            android:layout_marginTop="8dp"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            app:boxBackgroundMode="outline"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginHorizontal="20dp"
+            app:boxCornerRadiusBottomEnd="5dp"
+            app:boxCornerRadiusBottomStart="5dp"
+            app:boxCornerRadiusTopEnd="5dp"
+            app:boxCornerRadiusTopStart="5dp"
+            app:endIconMode="clear_text"
+            android:layout_marginBottom="5dp"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/newEmailEditTextId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="7dp"
+            android:layout_below="@id/newEmail"
+            android:id="@+id/newPass"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            app:boxBackgroundMode="outline"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginHorizontal="20dp"
+            app:boxCornerRadiusBottomEnd="5dp"
+            app:boxCornerRadiusBottomStart="5dp"
+            app:boxCornerRadiusTopEnd="5dp"
+            app:boxCornerRadiusTopStart="5dp"
+            app:endIconMode="password_toggle"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/newPasswordEditTextId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:text="Submit"
+            android:id="@+id/changeEmailPassSubmitButtonId"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/newPass"
+            android:layout_width="330dp"
+            android:textAllCaps="false"
+            android:backgroundTint="@color/dark_blue"
+            android:layout_centerHorizontal="true"
+            android:layout_height="60dp">
+
+        </Button>
+    </RelativeLayout>
+
+    <Button
+        android:text="Change"
+        android:id="@+id/changeEmailPassConfirmButtonId"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/newEmailPassword"
+        android:layout_width="330dp"
+        android:textAllCaps="false"
+        android:backgroundTint="@color/dark_blue"
+        android:layout_centerHorizontal="true"
+        android:layout_height="60dp">
+
+    </Button>
+
+
+
+</RelativeLayout>

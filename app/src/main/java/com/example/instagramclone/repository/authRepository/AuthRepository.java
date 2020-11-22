@@ -12,9 +12,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.SignInMethodQueryResult;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -23,6 +26,7 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -32,6 +36,146 @@ public class AuthRepository {
     private FirebaseFirestore firebaseFirestore= FirebaseFirestore.getInstance();
     private Login login= new Login();
     private Register register= new Register();
+
+    // update email and password
+    public MutableLiveData<String> UpdateEmailAndPassword(String email,String password) {
+        MutableLiveData<String> updateAuth = new MutableLiveData<>();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        user.updateEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                FirebaseAuth auth = FirebaseAuth.getInstance();
+                                FirebaseUser user = auth.getCurrentUser();
+                                user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if(task.isSuccessful()){
+                                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                                            String newPassword = password;
+
+                                            user.updatePassword(password).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    if(task.isSuccessful()){
+
+                                                        FirebaseAuth auth = FirebaseAuth.getInstance();
+                                                        String emailAddress = email;
+
+                                                        auth.sendPasswordResetEmail(emailAddress)
+                                                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                                    @Override
+                                                                    public void onComplete(@NonNull Task<Void> task) {
+                                                                        if (task.isSuccessful()) {
+
+                                                                             firebaseFirestore.collection("users").document(auth.getCurrentUser().getUid())
+                                                                                     .update("email",auth.getCurrentUser().getEmail())
+                                                                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                                                         @Override
+                                                                                         public void onComplete(@NonNull Task<Void> task) {
+                                                                                             if(task.isSuccessful()){
+                                                                                                 updateAuth.setValue("true");
+                                                                                                 auth.signOut();
+                                                                                             }
+                                                                                             else {
+                                                                                                 updateAuth.setValue(task.getException().toString());
+                                                                                             }
+                                                                                         }
+                                                                                     });
+
+
+                                                                        }
+                                                                    }
+                                                                });
+
+                                                    }
+                                                    else {
+                                                        updateAuth.setValue(task.getException().toString());
+                                                    }
+                                                }
+                                            });
+                                        }
+                                        else {
+                                            updateAuth.setValue(task.getException().toString());
+                                        }
+                                    }
+                                });
+                            }
+                            else {
+                                updateAuth.setValue(task.getException().toString());
+                            }
+
+                        }
+                    });
+
+        return updateAuth;
+    }
+
+
+
+    // check the email is exist or not in firebase.......
+    public MutableLiveData<String> CheckEmailIsExist(String email) {
+        MutableLiveData<String> isEmailExist = new MutableLiveData<>();
+        firebaseAuth.fetchSignInMethodsForEmail(email).addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
+            @Override
+            public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
+                if(task.isSuccessful()){
+                    SignInMethodQueryResult result = task.getResult();
+                    List<String> signInMethods = result.getSignInMethods();
+                    if (signInMethods.contains(EmailAuthProvider.EMAIL_PASSWORD_SIGN_IN_METHOD)) {
+                        // User can sign in with email/password/ user is exist ....
+                        isEmailExist.setValue("exist");
+                    } else if (signInMethods.contains(EmailAuthProvider.EMAIL_LINK_SIGN_IN_METHOD)) {
+                        // User can sign in with email/link/ user don't exist
+                        isEmailExist.setValue("not_exist");
+                    }
+                    else {
+                        isEmailExist.setValue("not_exist");
+                    }
+
+                }
+                else {
+                    isEmailExist.setValue(task.getException().toString());
+                }
+
+            }
+        });
+
+        return isEmailExist;
+
+    }
+
+    // re - Authenticate the user. When user goes to change email and password.........
+    // the password is match or not....
+
+    public MutableLiveData<String> CheckConfirmPassword(String password) {
+        MutableLiveData<String> confirmPassword = new MutableLiveData<>();
+        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+        AuthCredential credential = EmailAuthProvider
+                .getCredential(currentUser.getEmail(), password);
+
+        currentUser.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+
+                if(task.isSuccessful()){
+                    confirmPassword.setValue("true");
+                }
+                else {
+                    confirmPassword.setValue("false");
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                confirmPassword.setValue("false");
+            }
+        });
+
+        return confirmPassword;
+    }
+
+
 
     // check user have in firebase or not .....
 
@@ -99,9 +243,7 @@ public class AuthRepository {
                                             login.uId= "not_exist";
                                             loginFirebase.setValue(login);
                                         }
-
                                     }
-
                                 }
                             });
 
@@ -126,7 +268,6 @@ public class AuthRepository {
                     login.uId= task.getException().toString();
                     loginFirebase.setValue(login);
                 }
-
             }
         });
 
@@ -138,7 +279,7 @@ public class AuthRepository {
 
     public MutableLiveData<Register> userSignUp(Register register){
         MutableLiveData<Register> registerFirebase= new MutableLiveData<>();
-        //FirebaseUser currentUser= firebaseAuth.getCurrentUser();
+        //FirebaseUser currentUser= firebaseAuth.getCurrentUser()
 
         firebaseAuth.createUserWithEmailAndPassword(register.getEmail(),register.getPassword())
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -146,14 +287,12 @@ public class AuthRepository {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             FirebaseUser currentUser= firebaseAuth.getCurrentUser();
-
                             currentUser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     register.isRegister= true;
                                     register.uId= currentUser.getUid();
                                     registerFirebase.setValue(register);
-
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
@@ -162,18 +301,14 @@ public class AuthRepository {
                                     firebaseAuth.signOut();
                                     register.uId= e.toString();
                                     registerFirebase.setValue(register);
-
                                 }
                             });
-
                         }
                         else {
                             register.isRegister= false;
                             register.uId= task.getException().toString();
                             registerFirebase.setValue(register);
-
                         }
-
                     }
                 });
 
@@ -206,9 +341,6 @@ public class AuthRepository {
                             }
                         }
                     }
-
-
-
                 }
 
             }
@@ -259,8 +391,6 @@ public class AuthRepository {
 
                                             }
                                         });
-
-
                             }
                             else {
                                 setNameFirebase.setValue("false");

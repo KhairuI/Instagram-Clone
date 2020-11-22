@@ -7,5 +7,6 @@
     <string name="unique_text"> * Username should be unique </string>
     <string name="userName_text"> Your Username and Display name are same now. You can change both in later but Username should be unique. Your Username name is:   </string>
     <string name="editName_text">Your new Username name is:   </string>
+    <string name="new_email_text">*Now you have to login with this new Email and Password </string>
 
 </resources>
