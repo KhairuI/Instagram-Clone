@@ -1,7 +1,7 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android">
 
+
     <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentTop="true">
@@ -13,8 +13,7 @@
             <com.google.android.material.tabs.TabLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/homeTabId"
-                android:background="@drawable/border_top">
+                android:id="@+id/insertTabId">
 
             </com.google.android.material.tabs.TabLayout>
 
@@ -24,3 +23,4 @@
 
 
 </merge>
+

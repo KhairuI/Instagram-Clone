@@ -1,0 +1,61 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/border_top">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/galleryToolbarId">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_centerVertical="true"
+                    android:id="@+id/postBackId"
+                    android:src="@drawable/ic_back_arrow"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp">
+
+                </ImageView>
+
+
+                <TextView
+                    android:layout_toEndOf="@id/postBackId"
+                    android:text="New Post"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="15dp"
+                    android:id="@+id/folderTextId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+
+
+                <ImageView
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:id="@+id/postConfirmId"
+                    android:src="@drawable/ic_check"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp">
+
+                </ImageView>
+
+
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+</merge>
+

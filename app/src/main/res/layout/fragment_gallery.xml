@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.insertView.GalleryFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Gallery Toolbar -->
+        <RelativeLayout
+            android:id="@+id/galleryTool"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include layout="@layout/gallery_toolbar"></include>
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_below="@id/galleryTool"
+            android:id="@+id/galleryMiddle"
+            android:orientation="vertical"
+            android:weightSum="100"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="60">
+
+                <ImageView
+                    android:id="@+id/galleryImageId"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </ImageView>
+
+                <ProgressBar
+                    android:id="@+id/galleryProgressId"
+                    android:layout_centerInParent="true"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp">
+
+                </ProgressBar>
+
+            </RelativeLayout>
+
+            <GridView
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:id="@+id/galleryGridViewId"
+                android:stretchMode="columnWidth"
+                android:horizontalSpacing="1dp"
+                android:verticalSpacing="1dp"
+                android:numColumns="3"
+                android:layout_height="0dp"
+                android:layout_weight="40">
+
+            </GridView>
+
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</FrameLayout>

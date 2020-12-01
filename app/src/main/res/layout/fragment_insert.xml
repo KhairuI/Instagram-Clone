@@ -5,10 +5,34 @@
     android:layout_height="match_parent"
     tools:context=".view.insertView.InsertFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Insert" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/bottomBar"
+                android:layout_alignParentBottom="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <include layout="@layout/insert_bottom_tab"></include>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/middle"
+                android:layout_above="@id/bottomBar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <include layout="@layout/layout_middle_page"></include>
+            </RelativeLayout>
+
+
+
+
+
+
+        </RelativeLayout>
 
 </FrameLayout>

@@ -27,6 +27,8 @@ import com.example.instagramclone.utils.UniversalImageLoader;
 import com.example.instagramclone.viewmodel.profileViewModel.ProfileViewModel;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
+import java.util.Objects;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class EditProfileFragment extends Fragment {
